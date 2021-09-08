@@ -41,8 +41,7 @@ export class EmployeeDashboardComponent implements OnInit {
       let ref = document.getElementById('cancelar')
       ref?.click();
       this.formValue.reset();
-      
-      
+      this.getAllEmployee();  
     },
     err=>{
       alert ("Empleado no agregado");
@@ -51,8 +50,7 @@ export class EmployeeDashboardComponent implements OnInit {
   getAllEmployee(){
     this.api.getEmployee()
     .subscribe(res=>{
-      this.employeedata = res;
-      this.getAllEmployee();
+      this.employeedata = res;  
     })
 
   } 
