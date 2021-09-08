@@ -1,0 +1,83 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1 style="color:aliceblue">Angular Crud</h1>
+        <div class="d-flex">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Agregar Empleado</button>
+        </div>
+    </div>
+</nav>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Id Empleado</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+            <th scope="col">Celular </th>
+            <th scope="col">Salario</th>
+            <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of employeedata">
+            <td>{{row.id}}</td>
+            <td>{{row.Nombre}}</td>
+            <td>{{row.Apellido}}</td>
+            <td>{{row.Email}}</td>
+            <td>{{row.Celular}}</td>
+            <td>{{row.Salario}}</td>
+            <td>
+                <!--<button (click) = "onEdit(row)"style="color:aliceblue" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
+                <button (click) ="deleteEmployee(row)" class="btn btn-danger mx-3">Eliminar</button> -->
+              
+            </td>
+            <button (click) = "onEdit(row)"style="color:aliceblue" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
+        </tr>
+    </tbody>
+    
+</table>
+    
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Datos de los Empleados</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                  <input type="text" formControlName = "Nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Apellido</label>
+                  <input type="text" formControlName ="Apellido" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Email</label>
+                    <input type="email" formControlName ="Email" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Celular</label>
+                    <input type="text" formControlName = "Celular" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Salario</label>
+                    <input type="text" formControlName ="Salario" class="form-control" id="exampleInputPassword1">
+                  </div>
+                
+            
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancelar" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" (click)= postEmployeeDetails() class="btn btn-primary">Agregar</button>
+          <button type="button" (click)= updateEmployeeDetails() class="btn btn-primary">Actulizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
